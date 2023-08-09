@@ -2,7 +2,8 @@
  * Defines the base URL for the API.
  * The default values is overridden by the `API_BASE_URL` environment variable.
  */
-const API_BASE_URL = process.env.API_BASE_URL
+
+const {REACT_APP_API_BASE_URL} = process.env 
 
 /**
  * Defines the default headers for these functions to work with `json-server`
@@ -51,7 +52,7 @@ async function fetchJson(url, options) {
  *  a promise that resolves to a possibly empty array of dishes saved in the database.
  */
 export async function listDishes(signal) {
-  const url = `${API_BASE_URL}/dishes`;
+  const url = `${REACT_APP_API_BASE_URL}/dishes`;
   return await fetchJson(url, { signal });
 }
 
@@ -61,7 +62,7 @@ export async function listDishes(signal) {
  *  a promise that resolves to the newly created order.
  */
 export async function createOrder(order, signal) {
-  const url = `${API_BASE_URL}/orders`;
+  const url = `${REACT_APP_API_BASE_URL}/orders`;
   const options = {
     method: "POST",
     headers,
@@ -81,7 +82,7 @@ export async function createOrder(order, signal) {
  *  a promise that resolves to the saved order.
  */
 export async function readOrder(orderId, signal) {
-  const url = `${API_BASE_URL}/orders/${orderId}`;
+  const url = `${REACT_APP_API_BASE_URL}/orders/${orderId}`;
   return await fetchJson(url, { signal });
 }
 
@@ -91,7 +92,7 @@ export async function readOrder(orderId, signal) {
  *  a promise that resolves to a possibly empty array of orders saved in the database.
  */
 export async function listOrders(signal) {
-  const url = `${API_BASE_URL}/orders`;
+  const url = `${REACT_APP_API_BASE_URL}/orders`;
   return await fetchJson(url, { signal });
 }
 
@@ -101,7 +102,7 @@ export async function listOrders(signal) {
  *  a promise that resolves to the update order.
  */
 export async function updateOrder(order, signal) {
-  const url = `${API_BASE_URL}/orders/${order.id}`;
+  const url = `${REACT_APP_API_BASE_URL}/orders/${order.id}`;
   const options = {
     method: "PUT",
     headers,
@@ -121,7 +122,7 @@ export async function updateOrder(order, signal) {
  *  a promise that resolves to null or an error message.
  */
 export async function deleteOrder(orderId, signal) {
-  const url = `${API_BASE_URL}/orders/${orderId}`;
+  const url = `${REACT_APP_API_BASE_URL}/orders/${orderId}`;
   const options = { method: "DELETE", signal };
   return await fetchJson(url, options);
 }
@@ -132,7 +133,7 @@ export async function deleteOrder(orderId, signal) {
  *  a promise that resolves to the newly created dish.
  */
 export async function createDish(dish, signal) {
-  const url = `${API_BASE_URL}/dishes`;
+  const url = `${REACT_APP_API_BASE_URL}/dishes`;
   const options = {
     method: "POST",
     headers,
@@ -152,7 +153,7 @@ export async function createDish(dish, signal) {
  *  a promise that resolves to the saved dish.
  */
 export async function readDish(dishId, signal) {
-  const url = `${API_BASE_URL}/dishes/${dishId}`;
+  const url = `${REACT_APP_API_BASE_URL}/dishes/${dishId}`;
   return await fetchJson(url, { signal });
 }
 
@@ -162,7 +163,7 @@ export async function readDish(dishId, signal) {
  *  a promise that resolves to the updated dish.
  */
 export async function updateDish(dish, signal) {
-  const url = `${API_BASE_URL}/dishes/${dish.id}`;
+  const url = `${REACT_APP_API_BASE_URL}/dishes/${dish.id}`;
   const options = {
     method: "PUT",
     headers,
@@ -182,7 +183,7 @@ export async function updateDish(dish, signal) {
  *  a promise that resolves to null or an error message.
  */
 export async function deleteDish(dishId, signal) {
-  const url = `${API_BASE_URL}/dishes/${dishId}`;
+  const url = `${REACT_APP_API_BASE_URL}/dishes/${dishId}`;
   const options = { method: "DELETE", signal };
   return await fetchJson(url, options);
 }
